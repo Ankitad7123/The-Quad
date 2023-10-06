@@ -1,0 +1,9 @@
+.singlepost{
+    flex: 10;
+}
+.side{
+    flex: 4;
+}
+.single{
+    display: flex;
+}

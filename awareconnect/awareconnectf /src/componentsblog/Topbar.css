@@ -1,0 +1,71 @@
+.topbar{
+    background-color: rgb(244, 248, 248);
+    width: 100vw;
+    height: 7vh;
+    z-index: 4;
+   
+    
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    position: sticky;
+    top:0;
+}
+.right{
+    position: relative;
+  
+  
+   
+    
+}
+.Right{
+   margin-right: 20px;
+   font-size: x-large;
+    height: 10px;
+}
+.Right:hover{
+    font-size: xx-large;
+}
+
+.Right1{
+  
+ 
+    font-size: x-large;
+    height: 10px;
+}
+.topicon{
+    color: #444;
+    font-size: larger;
+    margin-right: 40px;
+    cursor: pointer;
+
+}
+.topicon:hover{
+    color: rgb(131, 131, 243);
+}
+.left{
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    
+}
+.toplist{
+    
+    display: flex;
+    flex-direction: row;
+    justify-content:space-around;
+    align-items: center;
+    text-align: center;
+   
+}
+.toplist1{
+    margin-right: 80px;
+    color: #444;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: large;
+    cursor: pointer;
+}
+.toplist1:hover{
+    color:rgb(83, 78, 78);
+    font-size: x-large;
+}

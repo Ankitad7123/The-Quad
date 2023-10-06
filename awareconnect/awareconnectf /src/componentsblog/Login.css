@@ -1,0 +1,52 @@
+.login1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: antiquewhite;
+    width: 100vw;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-position: center;
+
+}
+.login2{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+   background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVcRxNPzrAE7n9f-clqVdvknLLQHb130HzbQ&usqp=CAU');
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+    flex-direction: column;
+    height: 40vh;
+    width: 30vw;
+    margin-top: 120px;
+    border: 2px solid rgb(243, 237, 237);
+    border-radius: 15px;
+    
+}
+
+
+   
+input{
+    width: 180px;
+    height: 30px;
+    text-align: center;
+    border: 2px solid black;
+    border-radius: 5px;
+}
+input:hover{
+    border: 2px solid  crimson;
+}
+button{
+    width: 130px;
+    height: 40px;
+    text-align: center;
+    border: 2px solid rgb(250, 199, 199);
+    border-radius: 5px;
+    background-color: rgb(245, 234, 234);
+    color: crimson;
+    font-size: 15px;
+
+}
