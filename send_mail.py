@@ -3,7 +3,8 @@ from flask import Flask, jsonify, request
 from datetime import datetime
 import os
 
-EMAIL_USERNAME = os.environ.get("your_email_password")
+YOUR_EMAIL=os.environ.get("your_email")
+YOUR_EMAIL_PASSWORD = os.environ.get("your_email_password")
 
 app = Flask(__name__)
 
