@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Data Statistics</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<style>/* styles.css */
+    .chart-heading {
+        font-family: "Rubik", sans-serif;
+        color: #023047;
+        text-transform: uppercase;
+        font-size: 24px;
+        text-align: center;
+      }
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        padding: 20px;
+    }
+    .chart-container {
+        width: 80%;
+        margin: 20px auto;
+    }
+    .pie-container {
+        width: 200px;
+      }
+      
+      .pie-stats {
+        font-family: "Rubik", sans-serif;
+        display: flex;
+        align-items: center;
+        gap: 24px;
+        margin: 0 auto;
+        width: fit-content;
+        box-shadow: 0 4px 12px -2px rgba(0, 0, 0, 0.3);
+        border-radius: 20px;
+        padding: 8px 32px;
+        color: #023047;
+        transition: all 400ms ease;
+      }
+      
+      .pie-stats:hover {
+        transform: scale(1.02);
+        box-shadow: 0 4px 16px -7px rgba(0, 0, 0, 0.3);
+      }
+      
+      .pie-stats .details ul {
+        list-style: none;
+        padding: 0;
+      }
+      
+      .pie-stats.details ul li {
+        font-size: 8px;
+        margin: 12px 0;
+        text-transform: uppercase;
+      }
+      
+      .pie-stats.details .percentage {
+        font-weight: 700;
+        color: #e63946;
+      }
+      
+    
+    /* You can add more styles here to customize the appearance of your chart */
+    </style>
+
+
+<body>
+    <h2 class="chart-heading">Mental Health Disorders Worldwide 2023 </h2>
+    <div class="chart-container">
+        <canvas id="myBarChart"></canvas>
+    </div>
+    <h2 class="chart-heading">Cancer Cases Worldwide</h2>
+    <div class="chart-container">
+        <canvas id="cancerWorld" width="400" height="300"></canvas>
+    </div>
+    <div class="chart-heading">Environmental Challenges</div>
+    <div class="pie-stats">
+        <div class="chart-container">
+            <canvas class="my-pie-chart" width="500" height="400"></canvas>
+        </div>
+        <div class="details">
+            <ul>
+
+            </ul>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+
+<script>
+    
+    var data = {
+        labels: ['Anxiety','Depression','Drug use disorder','Bipolar disorders','Eating disorders'],
+        datasets: [{
+            label: 'Count in millions',
+            data: [248,264,71,46,16], // Replace with your actual data
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)'
+            ],
+            borderWidth: 1
+        }]
+    };
+    
+    // Chart configuration
+    var config = {
+        type: 'bar',
+        data: data,
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    };
+    
+    // Create a new chart
+    var ctx = document.getElementById('myBarChart').getContext('2d');
+    var myChart = new Chart(ctx, config);
+
+
+
+    var c_ctx = document.getElementById('cancerWorld').getContext('2d');
+        var total_cases=[10000,8000,15000,12000,20000,6000,5000,7000,4000,5500]
+        var avoided_cases=[3000,2500,4000,3500,6000,1800,1500,2100,1200,1650]
+        // Define data for the merged bar chart
+        var cancer_data = {
+            labels: ['Lung Cancer','Colorectal Cancer','Breast Cancer','Prostate Cancer','Skin Cancer','Pancreatic Cancer','Ovarian Cancer','Bladder Cancer','Liver Cancer','Kidney Cancer'],
+            datasets: [
+                {
+                    label: "Total Cases",
+                    data: total_cases,
+                    backgroundColor: 'rgba(75, 192, 192, 0.6)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                },
+                {
+                    label: "Cases Avoided",
+                    data: avoided_cases,
+                    backgroundColor: 'rgba(255, 99, 132, 0.6)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 1
+                }
+            ]
+        };
+
+        // Configure the options for the chart
+        var cancer_options = {
+            animation: {
+                animateScale: true, // Enable scale animation
+                animateRotate: true, // Enable rotation animation
+                duration: 1000, // Animation duration in milliseconds
+            },
+            responsive: true,
+            
+            scales: {
+                x: {
+                    beginAtZero: true
+                },
+                y: {
+                    beginAtZero: true
+                }
+            }
+        };
+
+        // Create the merged bar chart
+        var cancerWorld = new Chart(c_ctx, {
+            type: 'bar',
+            data: cancer_data,
+            options: cancer_options
+            
+        });
+//pie chart
+        var pie_data_list=[10.5,18.4,2.6,7.9,10.5,39.5,5.3]
+        const pieData={
+            labels:["Biodiversity","Climate Changes","Energy Efficiency","Deforestation","Global Warming","Pollution","Sea level rise"],
+            data:pie_data_list
+        };
+        const mypieChart=document.querySelector(".my-pie-chart")
+        const ul=document.querySelector(".pie-stats .details ul")
+        new Chart(mypieChart,{
+            type:"doughnut",
+            data:{
+                labels:pieData.labels,
+                datasets:[
+                {
+                label:"Environmental Challenges",
+                data:pieData.data,
+                },
+                ],
+            },
+            pie_options:{
+                animation:{
+                    animateRotate:true,
+                    animateScale:true,
+                    duration:2000
+                },
+                borderWidth:10,
+                borderRadius:2,
+                hoverBorderWidth:0,
+                plugins:{
+                    legend:{
+                        display:false,
+                    },
+                },
+            },    
+            });
+        const populateUl = () => {
+                pieData.labels.forEach((l, i) => {
+                  let li = document.createElement("li");
+                  li.innerHTML = `${l}: <span class='percentage'>${pieData.data[i]}%</span>`;
+                  ul.appendChild(li);
+                });
+              };
+              
+        populateUl();    
+            
+        
+</script>
