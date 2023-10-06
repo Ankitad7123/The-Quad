@@ -6,8 +6,8 @@ app = Flask(__name__)
 
 
 def send_email(to_address, message):
-    my_email = "mahaleviraj1426@gmail.com"
-    password = "xgkzpopqywyykhcg"
+    my_email = YOUR_EMAIL
+    password = YOUR_EMAIL_PASSWORD
     with smtplib.SMTP("smtp.gmail.com", port=587) as connection:
         connection.starttls()
         connection.login(user=my_email, password=password)
@@ -25,5 +25,6 @@ def send_mail_on_access():
     message = request.json["message"]
     send_email(user_email, message=message)
     return jsonify({"message": "sent_succesfully"})
+
 
 app.run()
