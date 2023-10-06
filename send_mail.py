@@ -1,9 +1,12 @@
 import smtplib
 from flask import Flask, jsonify, request
 from datetime import datetime
+import os
+
+EMAIL_USERNAME = os.environ.get("EMAIL_USERNAME")
+EMAIL_PASSWORD = os.environ.get("EMAIL_PASSWORD")
 
 app = Flask(__name__)
-
 
 def send_email(to_address, message):
     my_email = YOUR_EMAIL
