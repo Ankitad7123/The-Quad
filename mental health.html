@@ -66,6 +66,11 @@
         font-weight: 700;
         color: #e63946;
       }
+      .stem-cell {
+        position: relative;
+        margin: auto;
+        max-width: 600px;
+    }
       
     
     /* You can add more styles here to customize the appearance of your chart */
@@ -77,10 +82,12 @@
     <div class="chart-container">
         <canvas id="myBarChart"></canvas>
     </div>
+    <br>
     <h2 class="chart-heading">Cancer Cases Worldwide</h2>
     <div class="chart-container">
         <canvas id="cancerWorld" width="400" height="300"></canvas>
     </div>
+    <br>
     <h2 class="chart-heading">Environmental Challenges</h2>
     <div class="pie-stats">
         <div class="chart-container">
@@ -92,9 +99,16 @@
             </ul>
         </div>
     </div>
+    <br>
     <h2 class="chart-heading">Human Trafficking data</h2>
     <div class="chart-container">
         <canvas id="myhtChart"></canvas>
+    </div>
+    <br>
+    <h2 class="chart-heading">stem cell data worldwide</h2>
+    <div class="stem-cell">
+        
+        <canvas id="mystemCell" width="400" height="300"></canvas>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="script.js"></script>
@@ -280,5 +294,42 @@
         var htctx = document.getElementById('myhtChart').getContext('2d');
         var myhtChart = new Chart(htctx, ht_config);
         
+        //stem cell
+        const stem_data = {
+            labels: ['2019','2020','2021','2022','2023'],
+            datasets: [
+                {
+                    label: 'Donations',
+                    data: [50000,55000,60000,65000,70000],
+                    borderColor: 'rgba(75, 192, 192, 1)', // Line color
+                    borderWidth: 2, // Line width
+                    fill: false // Do not fill the area under the line
+                },
+                {
+                    label: 'Uses',
+                    data: [60000,65000,70000,75000,80000],
+                    borderColor: 'rgba(255, 99, 132, 1)', // Line color
+                    borderWidth: 2, // Line width
+                    fill: false // Do not fill the area under the line
+                }
+            ]
+        };
+
+        // Define chart options
+        const stem_options = {
+            scales: {
+                y: {
+                    beginAtZero: true // Start the y-axis at zero
+                }
+            }
+        };
+
+        // Get the canvas element and create the chart
+        const stem_ctx = document.getElementById('mystemCell').getContext('2d');
+        const mystemChart = new Chart(stem_ctx, {
+            type: 'line', // Specify the chart type as a line chart
+            data:stem_data,
+            options: stem_options
+        });
         
 </script>
