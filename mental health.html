@@ -81,7 +81,7 @@
     <div class="chart-container">
         <canvas id="cancerWorld" width="400" height="300"></canvas>
     </div>
-    <div class="chart-heading">Environmental Challenges</div>
+    <h2 class="chart-heading">Environmental Challenges</h2>
     <div class="pie-stats">
         <div class="chart-container">
             <canvas class="my-pie-chart" width="500" height="400"></canvas>
@@ -91,6 +91,10 @@
 
             </ul>
         </div>
+    </div>
+    <h2 class="chart-heading">Human Trafficking data</h2>
+    <div class="chart-container">
+        <canvas id="myhtChart"></canvas>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="script.js"></script>
@@ -234,7 +238,47 @@
                 });
               };
               
-        populateUl();    
-            
+        populateUl();   
+
+        var ht_data = {
+            labels: ['0-8','9-17','18-20','21-23','24-26','27-29','30-38','39-47','48+'],
+            datasets: [{
+                label: 'Age of Detected Victims: Count in Percentage',
+                data: [4.8,18.6,10.7,10.8,10.4,9.1,19.7,9.5,6.4], // Replace with your actual data
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)'
+                ],
+                borderWidth: 1
+            }]
+        };
+        
+        // Chart configuration
+        var ht_config = {
+            type: 'bar',
+            data: ht_data,
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        };
+        
+        // Create a new chart
+        var htctx = document.getElementById('myhtChart').getContext('2d');
+        var myhtChart = new Chart(htctx, ht_config);
+        
         
 </script>
